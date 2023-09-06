@@ -1,25 +1,24 @@
-import {Router, Request, Response} from "express";
+import { Router, Request, Response } from 'express';
 
-import {GiftRecord} from "../records/gift.record";
-
+import { GiftRecord } from '../records/gift.record';
 
 export const giftRouter = Router();
 
 giftRouter
-    .get('/', async (req: Request, res: Response): Promise<void> => {
-        const giftList = await GiftRecord.listAll();
-        res.render('gift/list', {
-            giftList,
-        });
-    })
+  .get('/', async (req: Request, res: Response): Promise<void> => {
+    const giftList = await GiftRecord.listAll();
+    res.json({
+      giftList,
+    });
+  })
 
-    .post('/', async (req: Request, res: Response): Promise<void> => {
-        const data = {
-            ...req.body,
-            count: Number(req.body.count),
-        };
+  .post('/', async (req: Request, res: Response): Promise<void> => {
+    const data = {
+      ...req.body,
+      count: Number(req.body.count),
+    };
 
-        const newGift = new GiftRecord(data);
-        await newGift.insert();
-        res.redirect('/gift')
-    })
+    const newGift = new GiftRecord(data);
+    await newGift.insert();
+    res.redirect('/gift');
+  });
