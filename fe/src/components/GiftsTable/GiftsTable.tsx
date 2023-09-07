@@ -1,5 +1,5 @@
 import React from 'react';
-import { GiftEntity } from '../../types/gifts';
+import { GiftEntity } from '../../types';
 import { GiftsTableRow } from './GiftTableRow';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 
 export const GiftsTable = (props: Props) => {
   //   const [giftsList, setGiftsList] = useState<GiftEntity[] | null>(null);
-
+  console.log(props.gifts);
   return (
     <table>
       <thead>
@@ -16,6 +16,7 @@ export const GiftsTable = (props: Props) => {
           <th>ID</th>
           <th>Name</th>
           <th>Count</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
@@ -26,3 +27,4 @@ export const GiftsTable = (props: Props) => {
     </table>
   );
 };
+// e6 t5 d1 21 31

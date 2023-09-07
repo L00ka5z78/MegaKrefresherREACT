@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GiftEntity } from '../../types/gifts';
+import { GiftEntity } from '../../types';
 import { GiftsTable } from '../GiftsTable/GiftsTable';
 
 export const GiftsList = () => {
@@ -9,7 +9,10 @@ export const GiftsList = () => {
     (async () => {
       const res = await fetch('http://localhost:3001/gift');
       const data = await res.json();
-      setGiftsList(data.giftsList);
+      setGiftsList(
+        data.giftList
+      ); /**giftList === key from db! not from useState! */
+      console.log(data);
     })();
   }, []);
 
