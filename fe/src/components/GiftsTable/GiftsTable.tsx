@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { GiftEntity } from '../../types/gifts';
 import { GiftsTableRow } from './GiftTableRow';
 
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const GiftsTable = (props: Props) => {
-  const [giftsList, setGiftsList] = useState<GiftEntity[] | null>(null);
+  //   const [giftsList, setGiftsList] = useState<GiftEntity[] | null>(null);
 
   return (
     <table>
