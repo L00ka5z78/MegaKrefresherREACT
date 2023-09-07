@@ -1,5 +1,5 @@
 import React from 'react';
-import { GiftEntity } from '../../types/gifts';
+import { GiftEntity } from '../../types';
 
 interface Props {
   gift: GiftEntity;
@@ -29,7 +29,6 @@ export const GiftsTableRow = (props: Props) => {
       <td>{props.gift.name}</td>
       <td>{props.gift.count}</td>
       <td>{props.gift.desc}</td>
-      <td></td>
     </tr>
   );
 };

@@ -27,4 +27,3 @@ export const GiftsTable = (props: Props) => {
     </table>
   );
 };
-// e6 t5 d1 21 31
