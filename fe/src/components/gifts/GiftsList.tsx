@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { GiftEntity } from '../../types';
 import { GiftsTable } from '../GiftsTable';
+import { GiftEntity } from 'types';
 
 export const GiftsList = () => {
   const [giftsList, setGiftsList] = useState<GiftEntity[] | null>(null);
@@ -16,7 +16,7 @@ export const GiftsList = () => {
           0: count: 50 id: "0fa47f48-3559-4c3c-80ee-1a2695a39165"
           name: "Throw hammer"
           [[Prototype]]: Object */
-      console.log(data);
+      // console.log(data);
     })();
   }, []);
 

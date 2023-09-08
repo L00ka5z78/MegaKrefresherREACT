@@ -1,6 +1,6 @@
 import React from 'react';
-import { GiftEntity } from '../../types';
 import { GiftsTableRow } from './GiftTableRow';
+import { GiftEntity } from 'types';
 
 interface Props {
   gifts: GiftEntity[];
