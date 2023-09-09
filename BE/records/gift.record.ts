@@ -61,6 +61,15 @@ export class GiftRecord implements GiftEntity {
     return results.length === 0 ? null : new GiftRecord(results[0]);
   }
 
+  async deleteOne(id: string): Promise<void> {
+    const [results] = await pool.execute(
+      'DELETE FROM `gifts` WHERE `id` = :id',
+      {
+        id: this.id,
+      }
+    );
+  }
+
   async countGivenGifts(): Promise<number> {
     const [[{ count }]] = (await pool.execute(
       'SELECT COUNT (*) AS `count` FROM `children` WHERE `giftId` = :id',

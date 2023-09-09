@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 
 import { GiftRecord } from '../records/gift.record';
+import { ValidationError } from '../utils/error';
 
 export const giftRouter = Router();
 
@@ -10,6 +11,18 @@ giftRouter
     res.json({
       giftList,
     });
+  })
+
+  .delete('./:id', async (req: Request, res: Response) => {
+    const gift = GiftRecord.getOne(req.params.id);
+
+    if (!gift) {
+      throw new ValidationError('No such a gift...');
+    }
+    if ((await (await gift).countGivenGifts()) > 0) {
+      throw new ValidationError('Can not remove given gift');
+    }
+    res.end();
   })
 
   .post('/', async (req: Request, res: Response): Promise<void> => {
