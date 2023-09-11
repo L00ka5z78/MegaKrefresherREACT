@@ -12,7 +12,7 @@ export class GiftRecord implements GiftEntity {
   count: number;
   desc: string;
 
-  constructor(obj: GiftRecord) {
+  constructor(obj: GiftEntity) {
     if (!obj.name || obj.name.length < 3 || obj.name.length > 55) {
       throw new ValidationError(
         'Gifts name has to be between 3 - 55 characters'

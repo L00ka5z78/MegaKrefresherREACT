@@ -2,6 +2,7 @@ import { Router, Request, Response } from 'express';
 
 import { GiftRecord } from '../records/gift.record';
 import { ValidationError } from '../utils/error';
+import { CreateGiftReq } from '../types';
 
 export const giftRouter = Router();
 
@@ -27,12 +28,7 @@ giftRouter
   })
 
   .post('/', async (req: Request, res: Response): Promise<void> => {
-    const data = {
-      ...req.body,
-      count: Number(req.body.count),
-    };
-
-    const newGift = new GiftRecord(data);
+    const newGift = new GiftRecord(req.body as CreateGiftReq);
     await newGift.insert();
-    res.redirect('/gift');
+    res.json(newGift);
   });
