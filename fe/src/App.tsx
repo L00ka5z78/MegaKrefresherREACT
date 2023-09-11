@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import { GiftsList } from './components';
+import { GiftsView } from './views';
 
 export const App = () => {
   return (
     <div className="App">
-      <GiftsList />
+      <GiftsView />
     </div>
   );
 };

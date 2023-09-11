@@ -1,8 +1,11 @@
 import React from 'react';
-import { GiftsList } from '../components';
+import { AddGift, GiftsList } from '../components';
 
 export const GiftsView = () => {
-  <>
-    <GiftsList />
-  </>;
+  return (
+    <>
+      <GiftsList />
+      <AddGift />
+    </>
+  );
 };
