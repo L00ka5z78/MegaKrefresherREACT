@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from 'react';
-import { CreateGiftReq } from 'types';
+import { CreateGiftReq, GiftEntity } from 'types';
 import { Spinner } from '../Spinner';
 
 export const AddGift = () => {
@@ -9,6 +9,7 @@ export const AddGift = () => {
     desc: '',
   });
   const [loading, setLoading] = useState<boolean>(false);
+  const [resultInfo, setResultInfo] = useState<string | null>(null);
 
   const updateForm = (key: string, value: any) => {
     setForm((prevForm) => ({
@@ -21,10 +22,36 @@ export const AddGift = () => {
     e.preventDefault();
 
     setLoading(true);
+
+    try {
+      const res = await fetch(`http://localhost:3001/gift`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+      const data: GiftEntity = await res.json();
+
+      setResultInfo(`${data.name} added with ${data.id} ID`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (loading) {
     return <Spinner />;
+  }
+
+  if (resultInfo !== null) {
+    return (
+      <div>
+        <p>
+          <strong>{resultInfo}</strong>
+        </p>
+        <button onClick={() => setResultInfo(null)}>Add another one</button>
+      </div>
+    );
   }
 
   return (
@@ -34,6 +61,7 @@ export const AddGift = () => {
         <label>
           Name: <br />
           <input
+            required
             type="text"
             value={form.name}
             onChange={(e) => updateForm('name', e.target.value)}
