@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { CreateGiftReq } from 'types';
+import { Spinner } from '../Spinner';
 
 export const AddGift = () => {
   const [form, setForm] = useState<CreateGiftReq>({
@@ -15,12 +16,19 @@ export const AddGift = () => {
       [key]: value,
     }));
   };
+
+  const sendForm = async (e: FormEvent) => {
+    e.preventDefault();
+
+    setLoading(true);
+  };
+
   if (loading) {
-    return <p>... loading ... ...</p>;
+    return <Spinner />;
   }
 
   return (
-    <form>
+    <form onSubmit={sendForm}>
       <h2>Add gift</h2>
       <p>
         <label>
@@ -54,7 +62,7 @@ export const AddGift = () => {
         </label>
       </p>
 
-      <button>ADD</button>
+      <button type="submit">ADD</button>
     </form>
   );
 };

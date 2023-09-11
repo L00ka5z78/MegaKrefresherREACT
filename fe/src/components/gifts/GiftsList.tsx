@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { GiftEntity } from 'types';
 import { GiftsTable } from '../GiftsTable';
+import { Spinner } from '../Spinner';
 
 export const GiftsList = () => {
   const [giftsList, setGiftsList] = useState<GiftEntity[] | null>(null);
@@ -17,7 +18,7 @@ export const GiftsList = () => {
   }, []);
 
   if (giftsList === null) {
-    return <p>Loading... ...</p>;
+    return <Spinner />;
   }
   return (
     <>
