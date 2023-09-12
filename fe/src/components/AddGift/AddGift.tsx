@@ -31,6 +31,13 @@ export const AddGift = () => {
         },
         body: JSON.stringify(form),
       });
+
+      if ([400, 500].includes(res.status)) {
+        const error = await res.json();
+        alert(`Error has occurred: ${error.message}`);
+        return;
+      }
+
       const data: GiftEntity = await res.json();
 
       setResultInfo(`${data.name} added with ${data.id} ID`);
@@ -61,7 +68,7 @@ export const AddGift = () => {
         <label>
           Name: <br />
           <input
-            required
+            // required
             type="text"
             value={form.name}
             onChange={(e) => updateForm('name', e.target.value)}

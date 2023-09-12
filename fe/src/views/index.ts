@@ -1,4 +1,4 @@
 export * from './GiftView';
-export * from './TestView';
+export * from './ChildView';
 export * from './NotFoundView';
 export * from './SingleGiftView';
