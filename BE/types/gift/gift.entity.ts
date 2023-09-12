@@ -1,5 +1,5 @@
 export interface GiftEntity {
-  id: string;
+  id?: string;
   name: string;
   count: number;
   desc: string;

@@ -2,16 +2,17 @@ import { pool } from '../utils/db';
 import { ValidationError } from '../utils/error';
 import { v4 as uuid } from 'uuid';
 import { FieldPacket } from 'mysql2';
+import { GiftEntity } from '../types';
 
 type GiftRecordResult = [GiftRecord[], FieldPacket[]];
 
-export class GiftRecord {
+export class GiftRecord implements GiftEntity {
   id?: string;
   name: string;
   count: number;
   desc: string;
 
-  constructor(obj: GiftRecord) {
+  constructor(obj: GiftEntity) {
     if (!obj.name || obj.name.length < 3 || obj.name.length > 55) {
       throw new ValidationError(
         'Gifts name has to be between 3 - 55 characters'
@@ -58,6 +59,15 @@ export class GiftRecord {
       }
     )) as GiftRecordResult;
     return results.length === 0 ? null : new GiftRecord(results[0]);
+  }
+
+  async delete(): Promise<void> {
+    const [results] = await pool.execute(
+      'DELETE FROM `gifts` WHERE `id` = :id',
+      {
+        id: this.id,
+      }
+    );
   }
 
   async countGivenGifts(): Promise<number> {
