@@ -2,6 +2,12 @@ import { Router, Request, Response } from 'express';
 import { ChildRecord } from '../records/child.record';
 import { GiftRecord } from '../records/gift.record';
 import { ValidationError } from '../utils/error';
+import {
+  ChildEntity,
+  CreateChildReq,
+  ListChildrenRes,
+  SetGiftForChildReq,
+} from '../types';
 
 export const childRouter = Router();
 
@@ -12,13 +18,14 @@ childRouter
     res.json({
       childrenList,
       giftsList,
-    });
+    } as ListChildrenRes);
   })
 
   .post('/', async (req, res) => {
     const newChild = new ChildRecord(req.body);
     await newChild.insert();
-    res.redirect('/child');
+
+    res.json(newChild);
   })
 
   .patch(
@@ -42,6 +49,6 @@ childRouter
       child.giftId = gift?.id ?? null;
       await child.update();
 
-      res.redirect('/child');
+      res.json(child);
     }
   );
