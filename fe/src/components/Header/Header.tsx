@@ -13,8 +13,8 @@ export const Header = () => {
         GiftS
       </NavLink>{' '}
       |{' '}
-      <NavLink style={colorOfLink} to="/test">
-        test
+      <NavLink style={colorOfLink} to="/child">
+        Children
       </NavLink>
       <hr />
     </>

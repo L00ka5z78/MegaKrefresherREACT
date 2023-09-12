@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { GetSingleGiftRes } from 'types';
-// import { GetSingleGiftRes } from 'types';
+import { Link, useParams } from 'react-router-dom';
+
+import '../index.css';
 
 export const SingleGiftView = () => {
   const [giftInfo, setGiftInfo] = useState<GetSingleGiftRes | null>(null);
@@ -9,26 +10,29 @@ export const SingleGiftView = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`http://localhost:3000/gift/${idOfGift}`);
-      const data = await res.json();
+      const res = await fetch(`http://localhost:3001/gift/${idOfGift}`);
+      setGiftInfo(await res.json());
     })();
   }, []);
 
   if (giftInfo === null) {
     return null;
   }
-
   return (
     <>
       <h1>{giftInfo.gift.name}</h1>
-      <p>
-        Gift ID is: <strong>{giftInfo.gift.id}</strong>
-      </p>
-      <p>
-        There is: <strong>{giftInfo.gift.count} pcs.</strong> and{' '}
-        <strong>{giftInfo.givenCount} </strong> is already given.
-      </p>
-      <p>Short description: {giftInfo.gift.desc}</p>
+      <div className="single_gift">
+        <p>
+          {' '}
+          Description: <strong>{giftInfo.gift.desc}</strong>.{' '}
+        </p>
+        There is <strong>{giftInfo.gift.count}</strong> pieces of this item and{' '}
+        <strong>{giftInfo.givenCount} already given.</strong> Beware of people
+        using this.....
+      </div>
+      <br />
+      <hr />
+      <Link to="/gift">Go back to list</Link>
     </>
   );
 };

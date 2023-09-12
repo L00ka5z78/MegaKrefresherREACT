@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { GiftsView, NotFoundView, SingleGiftView, TestView } from './views';
+import { GiftsView, NotFoundView, SingleGiftView, ChildView } from './views';
 import { Route, Routes } from 'react-router-dom';
 import { Header } from './components';
 
@@ -11,7 +11,7 @@ export const App = () => {
       <Routes>
         <Route path="/gift" element={<GiftsView />} />
         <Route path="/gift/:idOfGift" element={<SingleGiftView />} />
-        <Route path="/test" element={<TestView />} />
+        <Route path="/child" element={<ChildView />} />
         <Route path="*" element={<NotFoundView />} />
       </Routes>
     </>
