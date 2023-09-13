@@ -6,3 +6,4 @@ export * from './Header';
 export * from './Children';
 export * from './AddChild';
 export * from './Gifts/GiftsList';
+export * from './Child';
