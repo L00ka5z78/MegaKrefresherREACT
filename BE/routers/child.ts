@@ -31,14 +31,18 @@ childRouter
   .patch(
     '/gift/:childId',
     async (req: Request, res: Response): Promise<void> => {
+      const {
+        body,
+      }: {
+        body: SetGiftForChildReq;
+      } = req;
+
       const child = await ChildRecord.getOne(req.params.childId);
       if (child === null) {
         throw new ValidationError('Cant find child with given ID.');
       }
       const gift =
-        req.body.giftId === ''
-          ? null
-          : await GiftRecord.getOne(req.body.giftId);
+        body.giftId === '' ? null : await GiftRecord.getOne(body.giftId);
 
       if (gift) {
         if (gift.count <= (await gift.countGivenGifts())) {

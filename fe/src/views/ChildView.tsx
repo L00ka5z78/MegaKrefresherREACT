@@ -1,12 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { AddChild, ChildrenList } from '../components';
 
-export const ChildView = () => {
-  const params = useParams();
-  console.log(params);
-  return (
-    <>
-      <h1>test</h1>
-    </>
-  );
-};
+export const ChildView = () => (
+  <>
+    <ChildrenList />
+    <AddChild />
+  </>
+);
