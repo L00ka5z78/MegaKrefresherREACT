@@ -1,30 +1,29 @@
 import React from 'react';
 import { ChildrenTableRow } from './ChildrenTableRow';
-import { ChildEntity } from 'types';
+import { ChildEntity, GiftEntity } from 'types';
 // import '../../index.css'
 
 interface Props {
-  children: ChildEntity[];
-  onGiftsChange: () => void;
+  childrenList: ChildEntity[];
+  giftsList: GiftEntity[];
 }
 
 export const ChildrenTable = (props: Props) => (
   <table>
     <thead>
       <tr>
-        {/* <th>ID</th> */}
         <th>Name</th>
-        <th>Count</th>
+        <th>Gift</th>
         <th>Description</th>
-        <th>Action</th>
+        {/* <th>Action</th>  */}
       </tr>
     </thead>
     <tbody>
-      {props.children.map((child) => (
+      {props.childrenList.map((child) => (
         <ChildrenTableRow
           child={child}
           key={child.id}
-          onGiftsChange={props.onGiftsChange}
+          giftsList={props.giftsList}
         />
       ))}
     </tbody>

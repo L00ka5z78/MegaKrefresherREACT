@@ -10,6 +10,7 @@ export class ChildRecord implements ChildEntity {
   public id?: string;
   public name: string;
   public giftId: string;
+  public desc: string;
 
   constructor(obj: ChildRecord) {
     if (!obj.name || obj.name.length < 3 || obj.name.length > 25) {
