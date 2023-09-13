@@ -36,6 +36,7 @@ childRouter
       }: {
         body: SetGiftForChildReq;
       } = req;
+      console.log(body);
 
       const child = await ChildRecord.getOne(req.params.childId);
       if (child === null) {

@@ -20,6 +20,7 @@ export class ChildRecord implements ChildEntity {
     this.id = obj.id;
     this.name = obj.name;
     this.giftId = obj.giftId;
+    this.desc = obj.desc;
   }
 
   async insert(): Promise<string> {
@@ -55,10 +56,11 @@ export class ChildRecord implements ChildEntity {
 
   async update(): Promise<void> {
     await pool.execute(
-      'UPDATE `children` SET `name` = :name, `giftId` = :giftId WHERE `id` = :id',
+      'UPDATE `children` SET `name` = :name, `desc` = :desc, `giftId` = :giftId WHERE `id` = :id',
       {
         id: this.id,
         name: this.name,
+        desc: this.desc,
         giftId: this.giftId,
       }
     );
