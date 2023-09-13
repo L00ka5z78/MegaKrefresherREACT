@@ -1,11 +1,19 @@
 import React from 'react';
 import './App.css';
-import { GiftsList } from './components/Gifts/GiftsList';
+import { GiftsView, NotFoundView, SingleGiftView, ChildView } from './views';
+import { Route, Routes } from 'react-router-dom';
+import { Header } from './components';
 
 export const App = () => {
   return (
-    <div className="App">
-      <GiftsList />
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/gift" element={<GiftsView />} />
+        <Route path="/gift/:idOfGift" element={<SingleGiftView />} />
+        <Route path="/child" element={<ChildView />} />
+        <Route path="*" element={<NotFoundView />} />
+      </Routes>
+    </>
   );
 };

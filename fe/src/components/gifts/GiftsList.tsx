@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { GiftEntity } from '../../types';
-import { GiftsTable } from '../GiftsTable/GiftsTable';
+import { GiftEntity } from 'types';
+import { GiftsTable } from '../GiftsTable';
+import { Spinner } from '../Spinner';
 
 export const GiftsList = () => {
   const [giftsList, setGiftsList] = useState<GiftEntity[] | null>(null);
 
+  const refreshGifts = async () => {
+    setGiftsList(null);
+    const res = await fetch('http://localhost:3001/gift');
+    const data = await res.json();
+    setGiftsList(data.giftList);
+  };
+
   useEffect(() => {
-    (async () => {
-      const res = await fetch('http://localhost:3001/gift');
-      const data = await res.json();
-      setGiftsList(
-        data.giftList
-      ); /**giftList === key from db! not from useState! */
-      console.log(data);
-    })();
+    refreshGifts();
   }, []);
 
   if (giftsList === null) {
-    return <p>Loading ... ...</p>;
+    return <Spinner />;
   }
   return (
     <>
-      <h1>Gifts</h1>
-      <GiftsTable gifts={giftsList} />
+      <h1>GIFTS</h1>
+      <GiftsTable gifts={giftsList} onGiftsChange={refreshGifts} />
     </>
   );
 };
