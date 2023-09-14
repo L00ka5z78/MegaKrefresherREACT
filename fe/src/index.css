@@ -1,4 +1,7 @@
 body {
+  /* background-color: teal; */
+  /*background-position: center; */
+  font-family: 'Rajdhani', sans-serif;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -6,8 +9,118 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+h2 {
+  text-align: center;
+  padding: 15px;
+}
+
+.form {
+  border: 2px solid #ddd;
+  border-radius: 0.5em;
+  width: 50%;
+  text-align: center;
+  padding: 10px;
+  margin: 10px auto 0;
+}
+
+.singleItem {
+  width: 75%;
+  text-align: center;
+}
+
+table {
+  margin-top: 30px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+thead {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04aa6d;
+  color: white;
+  font-size: 0.7em;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #817676;
+}
+
+select {
+  width: 49%;
+  height: 2.5em;
+  text-align: center;
+
+  border-color: #04aa6d;
+}
+.not_found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  background-color: cadetblue;
+  flex-direction: column;
+}
+.not_found_img {
+  width: 300px;
+  border-radius: 50%;
+  padding: 10px;
+}
+.single_gift {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: red;
+  padding: 10px;
+  background-color: #b09599;
+  justify-content: center;
+  height: 60vh;
+
+  border: 1px solid #ddd;
+  border-radius: 0.5em;
+  /*width: 50%;*/
+  text-align: center;
+  margin: 10px auto 0;
+
+  width: 55%;
+}
+form {
+  /* display: flex;
+  align-items: center;
+  flex-direction: column; */
+  border: 2px solid #ddd;
+  border-radius: 0.5em;
+  width: 50%;
+  padding: 0.8rem;
+  margin: 10px auto 0;
+  margin-bottom: 1rem;
+  background-color: rgb(189, 177, 177);
+}
+button {
+  cursor: pointer;
 }

@@ -62,7 +62,7 @@ export const AddGift = () => {
   }
 
   return (
-    <form onSubmit={sendForm}>
+    <form className="form" onSubmit={sendForm}>
       <h2>Add gift</h2>
       <p>
         <label>

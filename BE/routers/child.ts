@@ -8,25 +8,34 @@ import {
   ListChildrenRes,
   SetGiftForChildReq,
 } from '../types';
+import { addChild, getChildren } from '../controllers/child-controlle';
 
 export const childRouter = Router();
 
 childRouter
-  .get('/', async (req, res) => {
-    const childrenList = await ChildRecord.listAll();
-    const giftsList = await GiftRecord.listAll();
-    res.json({
-      childrenList,
-      giftsList,
-    } as ListChildrenRes);
-  })
+  .get(
+    '/',
+    // getChildren
+    async (req, res) => {
+      const childrenList = await ChildRecord.listAll();
+      const giftsList = await GiftRecord.listAll();
+      res.json({
+        childrenList,
+        giftsList,
+      } as ListChildrenRes);
+    }
+  )
 
-  .post('/', async (req, res) => {
-    const newChild = new ChildRecord(req.body);
-    await newChild.insert();
+  .post(
+    '/',
+    // addChild
+    async (req, res) => {
+      const newChild = new ChildRecord(req.body);
+      await newChild.insert();
 
-    res.json(newChild);
-  })
+      res.json(newChild);
+    }
+  )
 
   .patch(
     '/gift/:childId',

@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from 'react';
 import { ChildEntity, CreateChildReq, GiftEntity } from 'types';
 import { Spinner } from '../Spinner';
+import '../../index.css';
 
 export const AddChild = () => {
   const [form, setForm] = useState<CreateChildReq>({
@@ -62,7 +63,7 @@ export const AddChild = () => {
   }
 
   return (
-    <form onSubmit={sendForm}>
+    <form className="form" onSubmit={sendForm}>
       <h2>Add child</h2>
       <p>
         <label>
